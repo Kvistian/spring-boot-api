@@ -12,6 +12,7 @@ class ApiControllerTest {
     public void helloUsesGivenName() {
         Assertions.assertThat(apiController.hello("Elias")).isEqualTo("Hello Elias!");
         Assertions.assertThat(apiController.hello("Sandra")).isEqualTo("Hello Sandra!");
+        Assertions.assertThat(apiController.hello("Andreas")).isEqualTo("Hello Andreas!");
     }
 
     @Test
