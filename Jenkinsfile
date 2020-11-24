@@ -16,7 +16,6 @@ pipeline {
                 echo 'Building docker image..'
                 script {
                     app = docker.build("kvistian/api")
-                    echo 'Image built'
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
@@ -42,7 +41,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                input 'Do you want to deploy ${env.BUILD_NUMBER}?'
+                input "Do you want to deploy ${env.BUILD_NUMBER}?"
                 milestone(1)
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2_credential', usernameVariable: 'USERNAME', keyFileVariable: 'KEY_FILE')]) {
                     script {
